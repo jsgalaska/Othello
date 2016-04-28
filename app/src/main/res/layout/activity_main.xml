@@ -3,11 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#2c2c2c"
+    android:weightSum="1">
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/buttonNewGame"
-        android:onClick="launchNewGame"/>
+        android:text="Start New Game"
+        android:onClick="launchNewGame"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="75dp"
+        android:layout_marginRight="75dp"
+        android:background="#000000"
+        android:textColor="#d1d1d1"
+        android:textAlignment="center"
+        android:textSize="20dp" />
 </LinearLayout>
