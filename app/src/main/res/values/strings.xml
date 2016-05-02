@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">Othello</string>
     <string name="buttonNewGame">New Game</string>
+    <string name="buttonGameStart">Start Game</string>
+    <string name="buttonReturnToMain">Back</string>
 
     <color name="lavender">#E6E6FA</color>
     <color name="darker_lavender">#a1a1af</color>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
 </resources>
