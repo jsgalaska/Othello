@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridLayout;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +30,12 @@ public class OthelloGame extends AppCompatActivity {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                /*ImageView image = (ImageView) gridView.getItemAtPosition(position);
+                if(image.getDrawable().equals(R.drawable.disc_simple_black)){
+                    image.setImageResource(R.drawable.disc_simple_white);
+                }else{
+                    image.setImageResource(R.drawable.disc_simple_black);
+                }*/
                 Toast.makeText(OthelloGame.this, "" + position, Toast.LENGTH_SHORT).show();
             }
         });
