@@ -5,10 +5,16 @@ import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridLayout;
+import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class OthelloGame extends AppCompatActivity {
+    GridView gridView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +23,15 @@ public class OthelloGame extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        GridLayout layout = (GridLayout) findViewById(R.id.othelloGrid);
+        gridView = (GridView) findViewById(R.id.othelloGrid);
+        gridView.setAdapter(new ImageAdapter(this));
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                Toast.makeText(OthelloGame.this, "" + position, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void registerClick(View view){
