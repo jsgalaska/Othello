@@ -26,7 +26,6 @@ public class OthelloGame extends AppCompatActivity {
 
         gridView = (GridView) findViewById(R.id.othelloGrid);
         gridView.setAdapter(new ImageAdapter(this));
-
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
