@@ -50,7 +50,7 @@ public class ImageAdapter extends BaseAdapter {
         }else{
             imageView = (ImageView) convertView;
         }
-        imageView.setImageResource(R.drawable.disc_simple_black);
+        imageView.setImageResource(R.drawable.disc_black_hd);
         return imageView;
     }
 }
