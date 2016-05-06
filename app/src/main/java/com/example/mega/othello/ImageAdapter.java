@@ -1,6 +1,8 @@
 package com.example.mega.othello;
 
 import android.content.Context;
+import android.graphics.Point;
+import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -34,12 +36,17 @@ public class ImageAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        Display display = parent.getDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x;
+        int square = width/8;
         ImageView imageView;
         if(convertView == null){
             imageView = new ImageView(mContext);
-            imageView.setLayoutParams(new GridView.LayoutParams(170,170));
+            imageView.setLayoutParams(new GridView.LayoutParams(square,square));
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            imageView.setPadding(4,4,4,4);
+            //imageView.setPadding(4,4,4,4);
         }else{
             imageView = (ImageView) convertView;
         }
