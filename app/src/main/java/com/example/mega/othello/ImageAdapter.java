@@ -3,17 +3,54 @@ package com.example.mega.othello;
 import android.content.Context;
 import android.graphics.Point;
 import android.view.Display;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 /**
  * Created by Shua on 5/4/2016.
  */
 public class ImageAdapter extends BaseAdapter {
     private Context mContext;
+    public int[] images ={
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            };
+
 
     public ImageAdapter(Context c){
         mContext = c;
@@ -26,12 +63,23 @@ public class ImageAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return images[position];
     }
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return images[position];
+    }
+
+    public void setItem(int position, int image){
+        images[position] = image;
+    }
+
+    class ViewHolder{
+        ImageView image;
+        ViewHolder(View v){
+            image = (ImageView) v.findViewById(R.id.pieceImage);
+        }
     }
 
     @Override
@@ -41,16 +89,22 @@ public class ImageAdapter extends BaseAdapter {
         display.getSize(size);
         int width = size.x;
         int square = width/8;
-        ImageView imageView;
+        View row = convertView;
+        ViewHolder holder = null;
         if(convertView == null){
-            imageView = new ImageView(mContext);
-            imageView.setLayoutParams(new GridView.LayoutParams(square,square));
-            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            row = inflater.inflate(R.layout.grid_space,parent,false);
+            holder = new ViewHolder(row);
+            row.setTag(holder);
+            //imageView.setLayoutParams(new GridView.LayoutParams(square,square));
+            //imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             //imageView.setPadding(4,4,4,4);
         }else{
-            imageView = (ImageView) convertView;
+            holder = (ViewHolder) row.getTag();
         }
-        imageView.setImageResource(R.drawable.disc_black_hd);
-        return imageView;
+        holder.image.setImageResource(images[position]);
+        holder.image.setLayoutParams(new LinearLayout.LayoutParams(square,square));
+        holder.image.setTag(images[position]);
+        return row;
     }
 }

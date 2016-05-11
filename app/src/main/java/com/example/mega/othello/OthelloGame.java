@@ -16,6 +16,40 @@ import java.util.ArrayList;
 
 public class OthelloGame extends AppCompatActivity {
     GridView gridView;
+    public int[] images ={
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +63,15 @@ public class OthelloGame extends AppCompatActivity {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                /*ImageView image = (ImageView) gridView.getItemAtPosition(position);
-                if(image.getDrawable().equals(R.drawable.disc_simple_black)){
-                    image.setImageResource(R.drawable.disc_simple_white);
+                ImageAdapter.ViewHolder holder = (ImageAdapter.ViewHolder) v.getTag();
+                //int imageID = (int) holder.image.getTag();
+                if(images[position] == R.drawable.disc_black_hd){
+                    holder.image.setImageResource(R.drawable.disc_white_hd);
+                    images[position] = R.drawable.disc_white_hd;
                 }else{
-                    image.setImageResource(R.drawable.disc_simple_black);
-                }*/
+                    holder.image.setImageResource(R.drawable.disc_black_hd);
+                    images[position] = R.drawable.disc_black_hd;
+                }
                 Toast.makeText(OthelloGame.this, "" + position, Toast.LENGTH_SHORT).show();
             }
         });
