@@ -72,6 +72,9 @@ public class OthelloGame extends AppCompatActivity {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView parent, View v, int position, long id) {
+                if(!isValidMove(position)){
+                    return;
+                }
                 ImageAdapter.ViewHolder holder = (ImageAdapter.ViewHolder) v.getTag();
                 //int imageID = (int) holder.image.getTag();
                 if(images[position] == R.drawable.transparent_tile){
@@ -94,7 +97,7 @@ public class OthelloGame extends AppCompatActivity {
     public void cpuMove(){
         ArrayList<Integer> possibleMoves = new ArrayList<Integer>();
         int move;
-        int square;
+        int square = 0;
         String poss = "";
         for(int i = 0; i < 64; i++){
             if(images[i] == R.drawable.transparent_tile){
@@ -103,8 +106,15 @@ public class OthelloGame extends AppCompatActivity {
             }
         }
         int size = possibleMoves.size();
-        move = (int) (Math.random()*possibleMoves.size());
-        square = possibleMoves.get(move);
+        boolean validMove = false;
+        while(validMove == false){
+            move = (int) (Math.random()*size);
+            square = possibleMoves.get(move);
+            if(isValidMove(square)){
+                validMove = true;
+            }
+        }
+
         makeMove(square);
     }
 
@@ -118,6 +128,116 @@ public class OthelloGame extends AppCompatActivity {
     public GameSession getSession(){
         return session;
     }
+
+    public boolean isValidMove(int position){
+        boolean foundNearby = false;
+        if(!(position%8==0)){
+            if(getTLeft(position) == true || getLeft(position) == true || getBLeft(position) == true){
+                foundNearby = true;
+            }
+        }
+        if(!(position%7==0)){
+            if(getTRight(position) == true || getRight(position) == true || getBRight(position) == true){
+                foundNearby = true;
+            }
+        }
+        if(getTop(position) == true || getBottom(position) == true){
+            foundNearby = true;
+        }
+        return foundNearby;
+    }
+
+    public boolean getTLeft(int middle){
+        int position = middle - 9;
+        if(!isEmptySquare(position)){
+            //Toast.makeText(OthelloGame.this,""+position, Toast.LENGTH_SHORT).show();
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public boolean getTop(int middle){
+        int position = middle - 8;
+        if(!isEmptySquare(position)){
+            //makeText(OthelloGame.this,""+position, Toast.LENGTH_SHORT).show();
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public boolean getTRight(int middle){
+        int position = middle - 7;
+        if(!isEmptySquare(position)){
+            //Toast.makeText(OthelloGame.this,""+position, Toast.LENGTH_SHORT).show();
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public boolean getLeft(int middle){
+        int position = middle - 1;
+        if(!isEmptySquare(position)){
+            //Toast.makeText(OthelloGame.this,""+position, Toast.LENGTH_SHORT).show();
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public boolean getRight(int middle){
+        int position = middle + 1;
+        if(!isEmptySquare(position)){
+           // Toast.makeText(OthelloGame.this,""+position, Toast.LENGTH_SHORT).show();
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public boolean getBLeft(int middle){
+        int position = middle + 7;
+        if(!isEmptySquare(position)){
+           // Toast.makeText(OthelloGame.this,""+position, Toast.LENGTH_SHORT).show();
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public boolean getBottom(int middle){
+        int position = middle + 8;
+        if(!isEmptySquare(position)){
+            //Toast.makeText(OthelloGame.this,""+position, Toast.LENGTH_SHORT).show();
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public boolean getBRight(int middle){
+        int position = middle + 9;
+        if(!isEmptySquare(position)){
+            //Toast.makeText(OthelloGame.this,""+position, Toast.LENGTH_SHORT).show();
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public boolean isEmptySquare(int position){
+        if(position < 0 || position > 63){
+            return true;
+        }
+        if(images[position] == R.drawable.transparent_tile){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 
 
     public void registerClick(View view){
