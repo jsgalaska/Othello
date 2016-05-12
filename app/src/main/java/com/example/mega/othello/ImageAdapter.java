@@ -7,49 +7,51 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import java.util.ArrayList;
 
 /**
  * Created by Shua on 5/4/2016.
  */
 public class ImageAdapter extends BaseAdapter {
     private Context mContext;
-    public int[] images ={
-            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
-            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
-            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
-            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
-            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
-            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
-            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
-            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
-            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
-            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
-            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
-            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
-            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
-            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
-            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
-            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
-            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
-            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
-            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
-            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
-            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
-            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
-            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
-            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
-            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
-            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
-            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
-            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
-            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
-            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
-            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
-            R.drawable.disc_black_hd, R.drawable.disc_black_hd,
-            };
+    ArrayList<ViewHolder> holderList = new ArrayList<ViewHolder>();
+    private int[] images ={
+            R.drawable.transparent_tile, R.drawable.transparent_tile,
+            R.drawable.transparent_tile, R.drawable.transparent_tile,
+            R.drawable.transparent_tile, R.drawable.transparent_tile,
+            R.drawable.transparent_tile, R.drawable.transparent_tile,
+            R.drawable.transparent_tile, R.drawable.transparent_tile,
+            R.drawable.transparent_tile, R.drawable.transparent_tile,
+            R.drawable.transparent_tile, R.drawable.transparent_tile,
+            R.drawable.transparent_tile, R.drawable.transparent_tile,
+            R.drawable.transparent_tile, R.drawable.transparent_tile,
+            R.drawable.transparent_tile, R.drawable.transparent_tile,
+            R.drawable.transparent_tile, R.drawable.transparent_tile,
+            R.drawable.transparent_tile, R.drawable.transparent_tile,
+            R.drawable.transparent_tile, R.drawable.transparent_tile,
+            R.drawable.transparent_tile, R.drawable.disc_white_hd, //Middle top
+            R.drawable.disc_black_hd, R.drawable.transparent_tile,
+            R.drawable.transparent_tile, R.drawable.transparent_tile,
+            R.drawable.transparent_tile, R.drawable.transparent_tile,
+            R.drawable.transparent_tile, R.drawable.disc_black_hd, //Middle bottom
+            R.drawable.disc_white_hd, R.drawable.transparent_tile,
+            R.drawable.transparent_tile, R.drawable.transparent_tile,
+            R.drawable.transparent_tile, R.drawable.transparent_tile,
+            R.drawable.transparent_tile, R.drawable.transparent_tile,
+            R.drawable.transparent_tile, R.drawable.transparent_tile,
+            R.drawable.transparent_tile, R.drawable.transparent_tile,
+            R.drawable.transparent_tile, R.drawable.transparent_tile,
+            R.drawable.transparent_tile, R.drawable.transparent_tile,
+            R.drawable.transparent_tile, R.drawable.transparent_tile,
+            R.drawable.transparent_tile, R.drawable.transparent_tile,
+            R.drawable.transparent_tile, R.drawable.transparent_tile,
+            R.drawable.transparent_tile, R.drawable.transparent_tile,
+            R.drawable.transparent_tile, R.drawable.transparent_tile,
+            R.drawable.transparent_tile, R.drawable.transparent_tile,
+    };
 
 
     public ImageAdapter(Context c){
@@ -68,7 +70,11 @@ public class ImageAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return images[position];
+        return holderList.get(position).image.getId();
+    }
+
+    public ViewHolder getHolder(int position) {
+        return holderList.get(position);
     }
 
     public void setItem(int position, int image){
@@ -96,6 +102,7 @@ public class ImageAdapter extends BaseAdapter {
             row = inflater.inflate(R.layout.grid_space,parent,false);
             holder = new ViewHolder(row);
             row.setTag(holder);
+            holderList.add(holder);
             //imageView.setLayoutParams(new GridView.LayoutParams(square,square));
             //imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             //imageView.setPadding(4,4,4,4);
