@@ -92,17 +92,20 @@ public class OthelloGame extends AppCompatActivity {
     }
 
     public void cpuMove(){
-        ArrayList possibleMoves = new ArrayList();
+        ArrayList<Integer> possibleMoves = new ArrayList<Integer>();
         int move;
+        int square;
+        String poss = "";
         for(int i = 0; i < 64; i++){
             if(images[i] == R.drawable.transparent_tile){
                 possibleMoves.add(i);
+                poss = poss + i +",";
             }
         }
         int size = possibleMoves.size();
         move = (int) (Math.random()*possibleMoves.size());
-        Toast.makeText(OthelloGame.this, size+":"+move, Toast.LENGTH_SHORT).show();
-        makeMove(move);
+        square = possibleMoves.get(move);
+        makeMove(square);
     }
 
     public void makeMove(int position){
