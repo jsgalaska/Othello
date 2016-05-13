@@ -237,8 +237,11 @@ public class OthelloGame extends AppCompatActivity {
     public ArrayList<Integer> checkLine(int position, int modifier){
         ImageAdapter.ViewHolder holder = adapter.getHolder(position);
         boolean keepGoing = true;
+        if(!isEmptySquare(position)){
+            keepGoing = false;
+        }
         ArrayList<Integer> array = new ArrayList<>();
-        do{
+        while(keepGoing){
             position = position + modifier;
             //Log.d("Debug", "current position" + position);
             if((position < 0 || position > 63)){
@@ -263,7 +266,7 @@ public class OthelloGame extends AppCompatActivity {
             }else{
                 keepGoing = false;
             }
-        }while(keepGoing);
+        };
         if(array.size()>1){
             Log.d("Debug", "get holder"+ array.get(array.size()-1));
             if(!(turn == 0 && R.drawable.disc_white_hd == images[array.get(array.size()-1)]
@@ -292,8 +295,10 @@ public class OthelloGame extends AppCompatActivity {
             return 0;
         }else if(black>white){
             return 1;
-        }else{
+        }else if(white == black){
             return 2;
+        }else{
+            return 3;
         }
     }
 }
