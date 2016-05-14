@@ -19,22 +19,9 @@
         android:background="@color/black"
         android:textColor="@color/white"
         android:id="@+id/buttonStart"
-        android:layout_marginBottom="47dp"
+        android:layout_marginBottom="46dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:text="@string/buttonReturnToMain"
-        android:onClick="returnToMain"
-        android:background="@color/black"
-        android:textColor="@color/white"
-        android:id="@+id/buttonBackToMain"
-        android:layout_alignTop="@+id/buttonStart"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/playersText"
@@ -53,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="P1 Select (Place Holder)"
+        android:text="P1 Select (placeholder)"
         android:textColor="@color/white"
         android:id="@+id/textPlayer1"
         android:layout_below="@+id/playersText"
@@ -67,7 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="P2 Select (Place Holder)"
+        android:text="P2 Select (placeholder)"
         android:textColor="@color/white"
         android:id="@+id/textPlayer2"
         android:layout_below="@+id/textPlayer1"

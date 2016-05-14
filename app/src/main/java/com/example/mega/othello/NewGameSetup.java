@@ -25,9 +25,4 @@ public class NewGameSetup extends AppCompatActivity {
         startActivity(intent);
         menuSound.start(); // sound for button
     }
-    public void returnToMain(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        menuSound.start(); // sound for button
-    }
 }
