@@ -18,39 +18,42 @@ import java.util.ArrayList;
 public class ImageAdapter extends BaseAdapter {
     private Context mContext;
     ArrayList<ViewHolder> holderList = new ArrayList<ViewHolder>();
-    private int[] images ={
-            R.drawable.transparent_tile, R.drawable.transparent_tile,
-            R.drawable.transparent_tile, R.drawable.transparent_tile,
-            R.drawable.transparent_tile, R.drawable.transparent_tile,
-            R.drawable.transparent_tile, R.drawable.transparent_tile,
-            R.drawable.transparent_tile, R.drawable.transparent_tile,
-            R.drawable.transparent_tile, R.drawable.transparent_tile,
-            R.drawable.transparent_tile, R.drawable.transparent_tile,
-            R.drawable.transparent_tile, R.drawable.transparent_tile,
-            R.drawable.transparent_tile, R.drawable.transparent_tile,
-            R.drawable.transparent_tile, R.drawable.transparent_tile,
-            R.drawable.transparent_tile, R.drawable.transparent_tile,
-            R.drawable.transparent_tile, R.drawable.transparent_tile,
-            R.drawable.transparent_tile, R.drawable.transparent_tile,
-            R.drawable.transparent_tile, R.drawable.disc_white_hd, //Middle top
-            R.drawable.disc_black_hd, R.drawable.transparent_tile,
-            R.drawable.transparent_tile, R.drawable.transparent_tile,
-            R.drawable.transparent_tile, R.drawable.transparent_tile,
-            R.drawable.transparent_tile, R.drawable.disc_black_hd, //Middle bottom
-            R.drawable.disc_white_hd, R.drawable.transparent_tile,
-            R.drawable.transparent_tile, R.drawable.transparent_tile,
-            R.drawable.transparent_tile, R.drawable.transparent_tile,
-            R.drawable.transparent_tile, R.drawable.transparent_tile,
-            R.drawable.transparent_tile, R.drawable.transparent_tile,
-            R.drawable.transparent_tile, R.drawable.transparent_tile,
-            R.drawable.transparent_tile, R.drawable.transparent_tile,
-            R.drawable.transparent_tile, R.drawable.transparent_tile,
-            R.drawable.transparent_tile, R.drawable.transparent_tile,
-            R.drawable.transparent_tile, R.drawable.transparent_tile,
-            R.drawable.transparent_tile, R.drawable.transparent_tile,
-            R.drawable.transparent_tile, R.drawable.transparent_tile,
-            R.drawable.transparent_tile, R.drawable.transparent_tile,
-            R.drawable.transparent_tile, R.drawable.transparent_tile,
+    int whitePiece = R.drawable.disc_white_hd;
+    int blackPiece = R.drawable.disc_black_hd;
+    int transparent = R.drawable.transparent_tile;
+    public int[] images ={
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, whitePiece, //Middle top
+            blackPiece, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, blackPiece, //Middle bottom
+            whitePiece, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
     };
 
 
