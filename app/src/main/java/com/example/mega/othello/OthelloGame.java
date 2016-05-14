@@ -92,6 +92,7 @@ public class OthelloGame extends AppCompatActivity {
 
     }
 
+    //calculate the cpu player's move
     public void cpuMove(){
         ArrayList<Integer> possibleMoves = new ArrayList<>();
         int move;
@@ -125,6 +126,7 @@ public class OthelloGame extends AppCompatActivity {
         }
     }
 
+    //perform move
     public void makeMove(int position){
         images[position] = R.drawable.disc_black_hd;
         ImageAdapter.ViewHolder holder = adapter.getHolder(position);
@@ -132,6 +134,7 @@ public class OthelloGame extends AppCompatActivity {
         turn = 0;
     }
 
+    //checks to see if the player's intended move is legal
     public boolean isValidMove(int position){
         ImageAdapter.ViewHolder holder;
         HashMap<String,ArrayList<Integer>> lines = new HashMap<>();
@@ -187,46 +190,55 @@ public class OthelloGame extends AppCompatActivity {
         return foundNearby;
     }
 
+    //checks the squares to the upper left of the selected move
     public ArrayList<Integer> getTLeft(int middle){
         Log.d("Debug", "topLeft");
         return checkLine(middle, -9);
     }
 
+    //checks the squares above the selected move
     public ArrayList<Integer> getTop(int middle){
         Log.d("Debug", "top");
         return checkLine(middle, -8);
     }
 
+    //checks the squares to the upper right of the selected move
     public ArrayList<Integer> getTRight(int middle){
         Log.d("Debug", "topRight");
         return checkLine(middle, -7);
     }
 
+    //checks the squares to the left of the selected move
     public ArrayList<Integer> getLeft(int middle){
         Log.d("Debug", "left");
         return checkLine(middle, -1);
     }
 
+    //checks the squares to the right of the selected move
     public ArrayList<Integer> getRight(int middle){
         Log.d("Debug", "right");
         return checkLine(middle, +1);
     }
 
+    //checks the squares to the lower left of the selected move
     public ArrayList<Integer> getBLeft(int middle){
         Log.d("Debug", "bottomLeft");
         return checkLine(middle, +7);
     }
 
+    //checks the squares under the selected move
     public ArrayList<Integer> getBottom(int middle){
         Log.d("Debug", "bottom");
         return checkLine(middle, +8);
     }
 
+    //checks the squares to the lower right of the selected move
     public ArrayList<Integer> getBRight(int middle){
         Log.d("Debug", "bottomRight");
         return checkLine(middle, +9);
     }
 
+    //checks a square to see if it's empty or out of bounds of the board
     public boolean isEmptySquare(int position){
         if(position < 0 || position > 63){
             return true;
@@ -234,6 +246,8 @@ public class OthelloGame extends AppCompatActivity {
         return(images[position] == R.drawable.transparent_tile);
     }
 
+    //checks the squares in a line going away from the players intended move to see if the move is
+    //legal. If the move is legal, the method returns an array of the squares so they can be flipped.
     public ArrayList<Integer> checkLine(int position, int modifier){
         ImageAdapter.ViewHolder holder = adapter.getHolder(position);
         boolean keepGoing = true;
@@ -279,6 +293,7 @@ public class OthelloGame extends AppCompatActivity {
         return array;
     }
 
+    //checks for a winner
     public int checkWin(){
         int white = 0;
         int black = 0;
@@ -292,12 +307,16 @@ public class OthelloGame extends AppCompatActivity {
             }
         }
         if(white>black){
+            Log.d("Debug", "White wins");
             return 0;
         }else if(black>white){
+            Log.d("Debug", "Black wins");
             return 1;
         }else if(white == black){
+            Log.d("Debug", "Tie");
             return 2;
         }else{
+            Log.d("Debug" ,"No winner");
             return 3;
         }
     }
