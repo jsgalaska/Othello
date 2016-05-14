@@ -19,7 +19,7 @@
         android:paddingBottom="0dp"
         android:stretchMode="columnWidth"
         android:gravity="center"
-        android:background="@drawable/board_green0"
+        android:background="@drawable/board_green_hd2_512"
     />
 
     <LinearLayout
