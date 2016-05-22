@@ -14,12 +14,21 @@ import com.mega.game.gameplay.GameSession;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import android.graphics.drawable.AnimationDrawable;
+import android.widget.ImageView;
+
 public class OthelloGame extends AppCompatActivity {
+
+    //For disc-piece animations
+    AnimationDrawable discAnimBtw;
+    AnimationDrawable discAnimWtb;
+    View discAnimationImageView;
+
     GridView gridView;
     ImageAdapter adapter;
     GameSession session;
-    int whitePiece = R.drawable.disc_white_hd;
-    int blackPiece = R.drawable.disc_black_hd;
+    int whitePiece = R.drawable.disc_wtb0000;
+    int blackPiece = R.drawable.disc_btw0000;
     int transparent = R.drawable.transparent_tile;
     int turn = 0;
     public int[] images ={
@@ -179,11 +188,23 @@ public class OthelloGame extends AppCompatActivity {
                 bool = bool + lines.get(l.get(j)).get(i);
                 int k = lines.get(l.get(j)).get(i);
                 holder = adapter.getHolder(k);
+
+                //disc piece animation
+                discAnimationImageView = findViewById(R.id.discAnimationImageView);
+
                 if(turn == 0){
-                    holder.image.setImageResource(whitePiece);
+                    holder.image.setImageResource(R.drawable.dpap_btw);
+                    discAnimBtw = (AnimationDrawable) holder.image.getDrawable();
+                    discAnimBtw.stop();
+                    discAnimBtw.start();
+                    //holder.image.setImageResource(whitePiece);
                     images[k] = whitePiece;
                 }else{
-                    holder.image.setImageResource(blackPiece);
+                    holder.image.setImageResource(R.drawable.dpap_wtb);
+                    discAnimWtb = (AnimationDrawable) holder.image.getDrawable();
+                    discAnimWtb.stop();
+                    discAnimWtb.start();
+                    //holder.image.setImageResource(blackPiece);
                     images[k] = blackPiece;
                 }
             }

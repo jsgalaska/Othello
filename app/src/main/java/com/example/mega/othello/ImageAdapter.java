@@ -18,8 +18,8 @@ import java.util.ArrayList;
 public class ImageAdapter extends BaseAdapter {
     private Context mContext;
     ArrayList<ViewHolder> holderList = new ArrayList<ViewHolder>();
-    int whitePiece = R.drawable.disc_white_hd;
-    int blackPiece = R.drawable.disc_black_hd;
+    int whitePiece = R.drawable.disc_wtb0000;
+    int blackPiece = R.drawable.disc_btw0000;
     int transparent = R.drawable.transparent_tile;
     public int[] images ={
             transparent, transparent,
