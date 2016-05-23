@@ -1,63 +1,79 @@
 package com.example.mega.othello;
 
+import java.util.HashMap;
+
 /**
  * Created by Shua on 5/2/2016.
  */
 public class GameBoard {
-    private GamePiece gameBoard[];
-    private final static int BOARD_SIZE = 64;
-
-    public static int getBoardSize(){
-        return BOARD_SIZE;
-    }
+    HashMap<String, Integer> pieces = new HashMap<>();
+    int whitePiece;
+    int blackPiece;
+    int transparent;
+    public int[] images ={
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, whitePiece, //Middle top
+            blackPiece, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, blackPiece, //Middle bottom
+            whitePiece, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+            transparent, transparent,
+    };
 
     public GameBoard(){
+        pieces.put("white", R.drawable.disc_white_hd);
+        pieces.put("black", R.drawable.disc_black_hd);
+        pieces.put("transparent", R.drawable.transparent_tile);
 
-        gameBoard = new GamePiece[BOARD_SIZE];
-
-        clearBoard();
+        whitePiece = pieces.get("white");
+        blackPiece = pieces.get("black");
+        transparent = pieces.get("transparent");
     }
 
-    public void clearBoard(){
-        //resets the board to empty state
-        for(int i = 0; i < BOARD_SIZE; i++){
-            gameBoard[i] = new GamePiece("Empty");
-        }
+    public void setPiece(int color, int position){
+        images[position] = color;
     }
 
-    public void setMove(String color, int location){
-        gameBoard[location].setColor(color);
+    public int getPiece(int position){
+        return images[position];
     }
 
-    public int checkForWin(){
-        //return 0 for no win
-        //return 1 for white win
-        //return 2 for black win
-        //return 3 for tie
+    public int getSize(){
+        return images.length;
+    }
 
-        int whiteTotal = 0;
-        int blackTotal = 0;
-
-        //check each square for piece color
-        for(int i = 0; i < BOARD_SIZE; i++){
-            if(("Empty").equals(gameBoard[i].getColor())){
-                return 0;
-            }else if(("white").equals(gameBoard[i].getColor())){
-                whiteTotal++;
-            }else if(("Black").equals(gameBoard[i].getColor())){
-                blackTotal++;
-            }
-        }
-
-        //check winner
-        if(whiteTotal > blackTotal){
-            return 1;
-        }else if(blackTotal > whiteTotal){
-            return 2;
+    public int getColor(String color)
+    {
+        if(pieces.containsKey(color)){
+            return pieces.get(color);
         }else{
-            return 3;
+            //TODO: throw error
+            return 0;
         }
-
     }
-
 }

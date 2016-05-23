@@ -1,7 +1,9 @@
 package com.example.mega.othello;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Point;
+import android.os.Build;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -84,13 +86,18 @@ public class ImageAdapter extends BaseAdapter {
         images[position] = image;
     }
 
-    class ViewHolder{
+    public class ViewHolder{
         ImageView image;
         ViewHolder(View v){
             image = (ImageView) v.findViewById(R.id.pieceImage);
         }
+
+        public ImageView getImage(){
+            return image;
+        }
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Display display = parent.getDisplay();
