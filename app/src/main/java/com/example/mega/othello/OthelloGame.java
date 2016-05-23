@@ -1,6 +1,6 @@
 package com.example.mega.othello;
 
-import android.content.Intent;
+//import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,13 +15,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import android.graphics.drawable.AnimationDrawable;
-import android.widget.ImageView;
+//import android.widget.ImageView;
 
 public class OthelloGame extends AppCompatActivity {
 
     //For disc-piece animations
-    AnimationDrawable discAnimBtw;
-    AnimationDrawable discAnimWtb;
+    AnimationDrawable discAnimBtw, discAnimWtb;
     View discAnimationImageView;
 
     GridView gridView;
@@ -193,18 +192,19 @@ public class OthelloGame extends AppCompatActivity {
                 discAnimationImageView = findViewById(R.id.discAnimationImageView);
 
                 if(turn == 0){
+                    //discAnimBtw.stop();
+                    //holder.image.setImageResource(whitePiece);
                     holder.image.setImageResource(R.drawable.dpap_btw);
                     discAnimBtw = (AnimationDrawable) holder.image.getDrawable();
-                    discAnimBtw.stop();
                     discAnimBtw.start();
-                    //holder.image.setImageResource(whitePiece);
                     images[k] = whitePiece;
+
                 }else{
+                    //discAnimWtb.stop();
+                    //holder.image.setImageResource(blackPiece);
                     holder.image.setImageResource(R.drawable.dpap_wtb);
                     discAnimWtb = (AnimationDrawable) holder.image.getDrawable();
-                    discAnimWtb.stop();
                     discAnimWtb.start();
-                    //holder.image.setImageResource(blackPiece);
                     images[k] = blackPiece;
                 }
             }
@@ -301,7 +301,7 @@ public class OthelloGame extends AppCompatActivity {
             }else{
                 keepGoing = false;
             }
-        };
+        }
         if(array.size()>1){
             Log.d("Debug", "get holder"+ array.get(array.size()-1));
             if(!(turn == 0 && whitePiece == images[array.get(array.size()-1)]
