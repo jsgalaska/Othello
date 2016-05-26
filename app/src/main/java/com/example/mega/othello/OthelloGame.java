@@ -129,10 +129,13 @@ public class OthelloGame extends AppCompatActivity {
         switch (checkWin()){
             case 0:
                 Toast.makeText(OthelloGame.this, "Player Wins!!!", Toast.LENGTH_LONG).show();
+                break;
             case 1:
                 Toast.makeText(OthelloGame.this, "CPU Wins!", Toast.LENGTH_LONG).show();
+                break;
             case 2:
                 Toast.makeText(OthelloGame.this, "TIE!", Toast.LENGTH_LONG).show();
+                break;
             default:
         }
     }
