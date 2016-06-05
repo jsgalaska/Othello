@@ -68,4 +68,8 @@ public class GameBoard {
         images[position] = color;
     }
 
+    public void newInstance(){
+        instance = null;
+    }
+
 }

@@ -21,6 +21,8 @@ public class NewGameSetup extends AppCompatActivity {
     }
 
     public void launchGame(View view){
+        GameBoard board = GameBoard.getInstance();
+        board.newInstance();
         Intent intent = new Intent(this, OthelloGame.class);
         startActivity(intent);
         menuSound.start(); // sound for button
