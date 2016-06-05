@@ -26,44 +26,12 @@ public class OthelloGame extends AppCompatActivity {
     GridView gridView;
     ImageAdapter adapter;
     GameSession session;
+    GameBoard board = GameBoard.getInstance();
     int whitePiece = R.drawable.disc_wtb0000;
     int blackPiece = R.drawable.disc_btw0000;
     int transparent = R.drawable.transparent_tile;
     int turn = 0;
-    public int[] images ={
-            transparent, transparent,
-            transparent, transparent,
-            transparent, transparent,
-            transparent, transparent,
-            transparent, transparent,
-            transparent, transparent,
-            transparent, transparent,
-            transparent, transparent,
-            transparent, transparent,
-            transparent, transparent,
-            transparent, transparent,
-            transparent, transparent,
-            transparent, transparent,
-            transparent, whitePiece, //Middle top
-            blackPiece, transparent,
-            transparent, transparent,
-            transparent, transparent,
-            transparent, blackPiece, //Middle bottom
-            whitePiece, transparent,
-            transparent, transparent,
-            transparent, transparent,
-            transparent, transparent,
-            transparent, transparent,
-            transparent, transparent,
-            transparent, transparent,
-            transparent, transparent,
-            transparent, transparent,
-            transparent, transparent,
-            transparent, transparent,
-            transparent, transparent,
-            transparent, transparent,
-            transparent, transparent,
-    };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,10 +54,10 @@ public class OthelloGame extends AppCompatActivity {
                 }
                 ImageAdapter.ViewHolder holder = (ImageAdapter.ViewHolder) v.getTag();
                 //int imageID = (int) holder.image.getTag();
-                if(images[position] == transparent){
+                if(board.getSquare(position) == transparent){
                     if(turn == 0){
                         holder.image.setImageResource(whitePiece);
-                        images[position] = whitePiece;
+                        board.setSquare(position, whitePiece);
                     }/*else{
                         holder.image.setImageResource(R.drawable.disc_black_hd);
                         images[position] = R.drawable.disc_black_hd;
@@ -110,7 +78,7 @@ public class OthelloGame extends AppCompatActivity {
         int square = 0;
         String poss = "";
         for(int i = 0; i < 64; i++){
-            if(images[i] == transparent){
+            if(board.getSquare(i) == transparent){
                 possibleMoves.add(i);
                 poss = poss + i +",";
             }
@@ -142,7 +110,7 @@ public class OthelloGame extends AppCompatActivity {
 
     //perform move
     public void makeMove(int position){
-        images[position] = blackPiece;
+        board.setSquare(position, blackPiece);
         ImageAdapter.ViewHolder holder = adapter.getHolder(position);
         holder.image.setImageResource(blackPiece);
         turn = 0;
@@ -200,7 +168,7 @@ public class OthelloGame extends AppCompatActivity {
                     holder.image.setImageResource(R.drawable.dpap_btw);
                     discAnimBtw = (AnimationDrawable) holder.image.getDrawable();
                     discAnimBtw.start();
-                    images[k] = whitePiece;
+                    board.setSquare(k, whitePiece);
 
                 }else{
                     //discAnimWtb.stop();
@@ -208,7 +176,7 @@ public class OthelloGame extends AppCompatActivity {
                     holder.image.setImageResource(R.drawable.dpap_wtb);
                     discAnimWtb = (AnimationDrawable) holder.image.getDrawable();
                     discAnimWtb.start();
-                    images[k] = blackPiece;
+                    board.setSquare(k, blackPiece);
                 }
             }
         }
@@ -270,7 +238,7 @@ public class OthelloGame extends AppCompatActivity {
         if(position < 0 || position > 63){
             return true;
         }
-        return(images[position] == transparent);
+        return(board.getSquare(position) == transparent);
     }
 
     //checks the squares in a line going away from the players intended move to see if the move is
@@ -292,8 +260,8 @@ public class OthelloGame extends AppCompatActivity {
             }
             if(!isEmptySquare(position)){
                 Log.d("Debug", "turn:"+ turn);
-                if((turn == 0 && whitePiece == images[position])
-                        || (turn == 1 && blackPiece == images[position])){
+                if((turn == 0 && whitePiece == board.getSquare(position))
+                        || (turn == 1 && blackPiece == board.getSquare(position))){
                     Log.d("Debug", "broken same"+ position);
                     array.add(position);
                     keepGoing = false;
@@ -307,8 +275,8 @@ public class OthelloGame extends AppCompatActivity {
         }
         if(array.size()>1){
             Log.d("Debug", "get holder"+ array.get(array.size()-1));
-            if(!(turn == 0 && whitePiece == images[array.get(array.size()-1)]
-                    || turn == 1 && blackPiece == images[array.get(array.size()-1)])){
+            if(!(turn == 0 && whitePiece == board.getSquare(array.get(array.size()-1))
+                    || turn == 1 && blackPiece == board.getSquare(array.get(array.size()-1)))){
                 array.clear();
             }
         }else{
@@ -321,12 +289,12 @@ public class OthelloGame extends AppCompatActivity {
     public int checkWin(){
         int white = 0;
         int black = 0;
-        for(int i = 0; i<images.length; i++){
-            if(images[i] == transparent){
+        for(int i = 0; i<64; i++){
+            if(board.getSquare(i) == transparent){
                 return 3;
-            }else if(images[i] == whitePiece){
+            }else if(board.getSquare(i) == whitePiece){
                 white++;
-            }else if(images[i] == blackPiece){
+            }else if(board.getSquare(i) == blackPiece){
                 black++;
             }
         }
