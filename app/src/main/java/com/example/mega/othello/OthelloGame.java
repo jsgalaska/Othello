@@ -273,14 +273,14 @@ public class OthelloGame extends AppCompatActivity {
 
                 if(turn == 0){
                     //holder.image.setImageResource(whitePiece);
-                    holder.image.setImageResource(R.drawable.dpap_btw);
-                    //holder.image.setImageBitmap(decodeSampledBitmapFromResource(getResources(), whitePiece, 64,64));
+                    //holder.image.setImageResource(R.drawable.dpap_btw);
+                    holder.image.setImageBitmap(decodeSampledBitmapFromResource(getResources(), whitePiece, 64,64));
                     board.setSquare(k, whitePiece);
 
                 }if(turn == 1){
                     //holder.image.setImageResource(blackPiece);
-                    holder.image.setImageResource(R.drawable.dpap_wtb);
-                    //holder.image.setImageBitmap(decodeSampledBitmapFromResource(getResources(), blackPiece, 64,64));
+                    //holder.image.setImageResource(R.drawable.dpap_wtb);
+                    holder.image.setImageBitmap(decodeSampledBitmapFromResource(getResources(), blackPiece, 64,64));
                     board.setSquare(k, blackPiece);
                 }
             }
