@@ -1,5 +1,7 @@
 package com.example.mega.othello;
 
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,6 +23,9 @@ import android.widget.ImageView;
 //import android.content.Intent;
 
 public class OthelloGame extends AppCompatActivity {
+
+    //For disc-piece animations
+    AnimationDrawable discAnimBtw, discAnimWtb;
 
     GridView gridView;
     ImageAdapter adapter;
@@ -271,16 +276,18 @@ public class OthelloGame extends AppCompatActivity {
                 int k = lines.get(l.get(j)).get(i);
                 holder = adapter.getHolder(k);
 
+                //discAnimationView = findViewById(R.id.id_btw_anim);
+
                 if(turn == 0){
                     //holder.image.setImageResource(whitePiece);
-                    //holder.image.setImageResource(R.drawable.dpap_btw);
-                    holder.image.setImageBitmap(decodeSampledBitmapFromResource(getResources(), whitePiece, 64,64));
+                    discAnimBtw = (AnimationDrawable) holder.image.getDrawable();
+                    discAnimBtw.start();
                     board.setSquare(k, whitePiece);
 
                 }if(turn == 1){
                     //holder.image.setImageResource(blackPiece);
-                    //holder.image.setImageResource(R.drawable.dpap_wtb);
-                    holder.image.setImageBitmap(decodeSampledBitmapFromResource(getResources(), blackPiece, 64,64));
+                    discAnimWtb = (AnimationDrawable)holder.image.getDrawable();
+                    discAnimWtb.start();
                     board.setSquare(k, blackPiece);
                 }
             }
