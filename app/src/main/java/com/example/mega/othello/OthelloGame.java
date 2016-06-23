@@ -26,6 +26,7 @@ public class OthelloGame extends AppCompatActivity {
 
     //For disc-piece animations
     AnimationDrawable discAnimBtw, discAnimWtb;
+    //View discAnimationView; *Probably unnecessary
 
     GridView gridView;
     ImageAdapter adapter;
@@ -276,16 +277,21 @@ public class OthelloGame extends AppCompatActivity {
                 int k = lines.get(l.get(j)).get(i);
                 holder = adapter.getHolder(k);
 
+                //disc piece animation *Probably unnecessary
                 //discAnimationView = findViewById(R.id.id_btw_anim);
 
                 if(turn == 0){
                     //holder.image.setImageResource(whitePiece);
+                    //holder.image.setImageBitmap(decodeSampledBitmapFromResource(getResources(), whitePiece, 64,64));
+                    holder.image.setImageResource(R.drawable.dpap_btw);
                     discAnimBtw = (AnimationDrawable) holder.image.getDrawable();
                     discAnimBtw.start();
                     board.setSquare(k, whitePiece);
 
                 }if(turn == 1){
                     //holder.image.setImageResource(blackPiece);
+                    //holder.image.setImageBitmap(decodeSampledBitmapFromResource(getResources(), blackPiece, 64,64));
+                    holder.image.setImageResource(R.drawable.dpap_wtb);
                     discAnimWtb = (AnimationDrawable)holder.image.getDrawable();
                     discAnimWtb.start();
                     board.setSquare(k, blackPiece);
