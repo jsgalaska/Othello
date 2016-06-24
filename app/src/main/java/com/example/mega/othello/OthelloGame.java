@@ -173,16 +173,19 @@ public class OthelloGame extends AppCompatActivity {
             }
         }
         int size = possibleMoves.size();
-        boolean validMove = false;
-        while(!validMove){
-            move = (int) (Math.random()*size);
-            square = possibleMoves.get(move);
-            if(isValidMove(square)){
-                validMove = true;
+
+        if(size > 0){
+            boolean validMove = false;
+            while(!validMove){
+                move = (int) (Math.random()*size);
+                square = possibleMoves.get(move);
+                if(isValidMove(square)){
+                    validMove = true;
+                }
             }
+            makeMove(square);
         }
 
-        makeMove(square);
         switch (checkWin()){
             case 0:
                 Toast.makeText(OthelloGame.this, "Player Wins!!!", Toast.LENGTH_LONG).show();
