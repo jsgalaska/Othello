@@ -19,8 +19,8 @@ public class ImageAdapter extends BaseAdapter {
     private Context mContext;
     ArrayList<ViewHolder> holderList = new ArrayList<ViewHolder>();
     GameBoard board = GameBoard.getInstance();
-    int whitePiece = R.drawable.disc_wtb0000;
-    int blackPiece = R.drawable.disc_btw0000;
+    int whitePiece = R.drawable.i14;
+    int blackPiece = R.drawable.i0;
     int transparent = R.drawable.transparent_tile;
 
 

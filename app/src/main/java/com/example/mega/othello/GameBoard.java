@@ -5,8 +5,8 @@ package com.example.mega.othello;
  */
 public class GameBoard {
     private static volatile GameBoard instance;
-    int whitePiece = R.drawable.disc_wtb0000;
-    int blackPiece = R.drawable.disc_btw0000;
+    int whitePiece = R.drawable.i14;
+    int blackPiece = R.drawable.i0;
     int transparent = R.drawable.transparent_tile;
 
     public int[] images ={

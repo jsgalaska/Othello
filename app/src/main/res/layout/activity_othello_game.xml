@@ -18,7 +18,7 @@
         android:paddingBottom="0dp"
         android:stretchMode="columnWidth"
         android:gravity="center"
-        android:background="@drawable/board_green_metal_512px"
+        android:background="@drawable/board_green_256px"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
